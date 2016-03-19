@@ -4,8 +4,8 @@
 .volume-block.noselect
     i.fa.fa-2x.volume-button(ng-class="{'fa-volume-up': !mute.enabled, 'fa-volume-off': mute.enabled, 'volume-muted': mute.enabled && !vol.hover, 'button-highlight': vol.hover}", ng-mouseenter='vol.hover=true', ng-mouseleave='vol.hover=false', ng-click='toggle(mute)')
 .player-block.noselect
-    i.fa.fa-step-backward.fa-2x.player-button(ng-class="{'button-highlight': back.hover}", ng-mouseenter="back.hover=true", ng-mouseleave="back.hover=false")
+    i.fa.fa-step-backward.fa-2x.player-button(ng-class="{'button-highlight': back.hover}", ng-mouseenter="back.hover=true", ng-mouseleave="back.hover=false", ng-click="skipBackward()")
     i.fa.fa-pause.fa-2x.player-button(ng-class="{'fa-pause':playing.enabled, 'fa-play': !playing.enabled, 'button-highlight': play.hover, 'play-button': !playing.enabled}", ng-mouseenter="play.hover=true", ng-mouseleave="play.hover=false", ng-click="toggle(playing)")
-    i.fa.fa-step-forward.fa-2x.player-button(ng-class="{'button-highlight': fwd.hover}", ng-mouseenter="fwd.hover=true", ng-mouseleave="fwd.hover=false")
-    i.fa.fa-refresh.fa-2x.player-button(ng-class="{'random-on': repeat.enabled && !rpt.hover, 'button-highlight': rpt.hover}", ng-mouseenter='rpt.hover=true', ng-mouseleave='rpt.hover=false' ng-click="toggle(repeat)")
-    i.fa.fa-random.fa-2x.player-button(ng-class="{'random-on': random.enabled && !rdm.hover, 'button-highlight': rdm.hover}", ng-mouseenter='rdm.hover=true', ng-mouseleave='rdm.hover=false' ng-click="toggle(random)")
+    i.fa.fa-step-forward.fa-2x.player-button(ng-class="{'button-highlight': fwd.hover}", ng-mouseenter="fwd.hover=true", ng-mouseleave="fwd.hover=false", ng-click="skipForward()")
+    i.fa.fa-refresh.fa-2x.player-button(ng-class="{'random-on': repeat.enabled && !rpt.hover, 'button-highlight': rpt.hover}", ng-mouseenter='rpt.hover=true', ng-mouseleave='rpt.hover=false', ng-click="toggle(repeat)")
+    i.fa.fa-random.fa-2x.player-button(ng-class="{'random-on': random.enabled && !rdm.hover, 'button-highlight': rdm.hover}", ng-mouseenter='rdm.hover=true', ng-mouseleave='rdm.hover=false', ng-click="toggle(random)")
