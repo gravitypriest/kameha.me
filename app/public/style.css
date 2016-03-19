@@ -1,0 +1,76 @@
+.menu-block {
+	left: 20px;
+	top: 20px;
+	position: absolute;
+}
+
+.player-block {
+	bottom: 20px;
+	right: 20px;
+	position:absolute;
+}
+
+.volume-block {
+	bottom:20px;
+	left:20px;
+	position:absolute;
+}
+
+.menu-button {
+	color: #FFF;
+	text-shadow: 1px 1px 1px #000;
+}
+
+.player-button {
+	margin-left:15px;
+	color: #FFF;
+	text-shadow: 1px 1px 1px #000;
+}
+
+/* to keep buttons aligned, play icon is slightly narrower than pause */
+.play-button{
+	margin-left: 17px; 
+}
+
+.volume-button {
+	color: #FFF;
+	text-shadow: 1px 1px 1px #000;
+}
+
+.button-highlight {
+	color: #CCC;
+	cursor: pointer;
+}
+
+.menu-highlight {
+	background: #CCC !important;
+	cursor: pointer;
+}
+
+.random-on {
+	color: #0F0;
+}
+
+.volume-muted {
+	color:#F00;
+}
+
+.menu-open-block {
+	left: 5px;
+	top: 5px;
+	position: absolute;	
+}
+
+.now-playing-title {
+	color: #BBB;
+}
+
+.noselect {
+  -webkit-touch-callout: none; /* iOS Safari */
+  -webkit-user-select: none;   /* Chrome/Safari/Opera */
+  -khtml-user-select: none;    /* Konqueror */
+  -moz-user-select: none;      /* Firefox */
+  -ms-user-select: none;       /* IE/Edge */
+  user-select: none;           /* non-prefixed version, currently
+                                  not supported by any browser */
+}

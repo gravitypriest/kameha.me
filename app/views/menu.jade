@@ -1,0 +1,12 @@
+.panel.panel-default
+	.panel-body
+		i.fa.fa-bars.fa-2x(ng-class="{'button-highlight': menu.hover}", ng-mouseenter="menu.hover=true", ng-mouseleave="menu.hover=false", ng-click="toggle(showmenu)")
+		h3 Now playing:
+		span.now-playing-title {{currentClip}}
+	ul.list-group
+		li.list-group-item(ng-repeat="c in menuControls", ng-class="{'menu-highlight': c.hover}", ng-mouseenter="c.hover=true", ng-mouseleave="c.hover=false", ng-click="c.click()") {{c.label()}}
+			strong
+				span(ng-show="c.name === 'repeat' && repeat.enabled") ON
+				span(ng-show="c.name === 'repeat' && !repeat.enabled") OFF			
+				span(ng-show="c.name === 'random' && random.enabled") ON
+				span(ng-show="c.name === 'random' && !random.enabled") OFF
