@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <title>かめはめ波 ~ Kameha.me</title>
+    </head>
+    <body ng-app="kamehameApp" ng-controller="kamehameCtrl" style="background: green">
+
+        <div id="video"></div>
+
+        <div class="menu-block">
+            <i class="fa fa-bars fa-2x menu-button", ng-class="{'button-highlight': menu.hover}", ng-mouseenter="menu.hover=true", ng-mouseleave="menu.hover=false"></i>
+        </div>
+
+        <div class="volume-block">
+            <i class="fa fa-2x volume-button",
+             ng-class="{'fa-volume-up': !mute.enabled,
+                        'fa-volume-off': mute.enabled,
+                        'volume-muted': mute.enabled && !vol.hover,
+                        'button-highlight': vol.hover}",
+             ng-mouseenter='vol.hover=true',
+             ng-mouseleave='vol.hover=false'
+             ng-click=toggleMute()></i>
+        </div>
+
+        <div class="player-block">
+            <i class="fa fa-step-backward fa-2x player-button",
+             ng-class="{'button-highlight': back.hover}",
+             ng-mouseenter="back.hover=true",
+             ng-mouseleave="back.hover=false"></i>
+            <i class="fa fa-pause fa-2x player-button",
+             ng-class="{'fa-pause':playing, 'fa-play': !playing, 'button-highlight': play.hover}",
+             ng-mouseenter="play.hover=true",
+             ng-mouseleave="play.hover=false",
+             ng-click="playPause()"></i>
+            <i class="fa fa-step-forward fa-2x player-button",
+             ng-class="{'button-highlight': fwd.hover}",
+             ng-mouseenter="fwd.hover=true",
+             ng-mouseleave="fwd.hover=false"></i>
+            <i class="fa fa-random fa-2x player-button",
+             ng-class="{'random-on': random.enabled && !rdm.hover,
+                        'button-highlight': rdm.hover}",
+             ng-mouseenter='rdm.hover=true',
+             ng-mouseleave='rdm.hover=false'
+             ng-click="toggleRandom()"></i>
+        </div>
+
+        <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.css" />
+
+        <script src="bower_components/angular/angular.js"></script>
+        <script src="scripts/app.js"></script>
+        <script src="scripts/controllers/app.controller.js"></script>
+
+        <script>
+           !function(A,n,g,u,l,a,r){A.GoogleAnalyticsObject=l,A[l]=A[l]||function(){
+           (A[l].q=A[l].q||[]).push(arguments)},A[l].l=+new Date,a=n.createElement(g),
+           r=n.getElementsByTagName(g)[0],a.src=u,r.parentNode.insertBefore(a,r)
+           }(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+           ga('create', 'UA-XXXXX-X');
+           ga('send', 'pageview');
+        </script>
+    </body>
+</html>
