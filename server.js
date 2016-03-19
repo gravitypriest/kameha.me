@@ -6,17 +6,17 @@ var pug = require('pug');
 var fs = require('fs');
 var app = express();
 
-var appRoot = path.join(__dirname, '/app');
-var videoDir = path.join(__dirname, '/video');
+var appRoot = path.join(__dirname, 'app');
+var videoDir = path.join(__dirname, 'video');
 
 var compileJade = function() {
 	// compile jade(pug) to html
-	jadeFiles = fs.readdirSync(path.join(appRoot, '/views'));
+	jadeFiles = fs.readdirSync(path.join(appRoot, 'views'));
 	for (var j in jadeFiles) {
 		jade = jadeFiles[j];
 		console.log('Compiling %s...', jade);
-		htmlFile = path.join(appRoot, '/public/', jade.replace('.jade', '.html'));
-		html = pug.renderFile(path.join(appRoot, '/views/', jade));
+		htmlFile = path.join(appRoot, 'public', jade.replace('.jade', '.html'));
+		html = pug.renderFile(path.join(appRoot, 'views', jade));
 		fs.writeFile(htmlFile, html, function(err) {
 			if (err) {
 				console.log('Error compiling %s: %s', jade, err);
@@ -41,23 +41,22 @@ var escapeClipName = function(clip) {
 			   .replace(/_/g, ' ');
 };
 
-app.set('port', process.env.OPENSHIFT_NODEJS_PORT || 8080);
-app.set('ip', process.env.OPENSHIFT_NODEJS_IP);
+app.set('port', process.env.PORT || 8080);
 
 compileJade();
 cliplist = generateClipList();
 
-app.use(express.static(path.join(appRoot, '/public')));
+app.use(express.static(path.join(appRoot, 'public')));
 app.use('/video', express.static(videoDir));
-app.use(express.static(path.join(appRoot, '/scripts')));
-app.use('/bower_components', express.static(path.join(__dirname, '/bower_components')));
+app.use(express.static(path.join(appRoot, 'scripts')));
+app.use('/bower_components', express.static(path.join(__dirname, 'bower_components')));
 
 app.get('/cliplist', function(req, res) {
     res.setHeader('Content-Type', 'application/json');
     res.send(cliplist);
 })
 
-http.createServer(app).listen(app.get('port'), app.get('ip'), function(){
-    console.log('%s: Node server started on %s:%d ...',
-                Date(Date.now() ), app.get('ip'), app.get('port'));
+http.createServer(app).listen(app.get('port'), function(){
+    console.log('%s: Node server started on port %d ...',
+                Date(Date.now() ), app.get('port'));
 });

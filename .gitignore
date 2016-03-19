@@ -2,3 +2,4 @@ node_modules
 bower_components
 video
 app/public/*.html
+!app/public/index.html
