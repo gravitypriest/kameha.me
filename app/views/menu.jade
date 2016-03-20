@@ -6,8 +6,8 @@
 	ul.list-group
 		li.list-group-item(ng-repeat="c in menuControls", ng-class="{'menu-highlight': c.hover}", ng-mouseenter="c.hover=true", ng-mouseleave="c.hover=false", ng-click="c.click()") 
 			span
-				i.fa.fa-pause.fa-1x(ng-show="c.name === 'pause'")
-				i.fa.fa-play.fa-1x(ng-show="c.name === 'play'")
+				i.fa.fa-pause.fa-1x(ng-show="c.name === 'play' && playing.enabled")
+				i.fa.fa-play.fa-1x(ng-show="c.name === 'play' && !playing.enabled")
 				i.fa.fa-step-forward.fa-1x(ng-show="c.name === 'forward'")
 				i.fa.fa-step-backward.fa-1x(ng-show="c.name === 'backward'")
 				i.fa.fa-random.fa-1x(ng-show="c.name === 'random'")

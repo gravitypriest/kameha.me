@@ -1,9 +1,11 @@
 #!/bin/env node
 var express = require('express');
 var path = require('path');
-var http = require('http')
+var http = require('http');
 var pug = require('pug');
 var fs = require('fs');
+var favicon = require('serve-favicon');
+
 var app = express();
 
 var appRoot = path.join(__dirname, 'app');
@@ -46,9 +48,12 @@ app.set('port', process.env.PORT || 8080);
 compileJade();
 cliplist = generateClipList();
 
+// http://realfavicongenerator.net/
+app.use(favicon(path.join(appRoot, 'public', 'favicons', 'favicon.ico')));
+
 app.use(express.static(path.join(appRoot, 'public')));
-app.use('/video', express.static(videoDir));
 app.use(express.static(path.join(appRoot, 'scripts')));
+app.use('/video', express.static(videoDir));
 app.use('/bower_components', express.static(path.join(__dirname, 'bower_components')));
 
 app.get('/cliplist', function(req, res) {
