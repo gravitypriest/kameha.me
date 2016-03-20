@@ -2,7 +2,7 @@
 	.panel-body
 		i.fa.fa-bars.fa-2x(ng-class="{'button-highlight': menu.hover}", ng-mouseenter="menu.hover=true", ng-mouseleave="menu.hover=false", ng-click="toggle(showmenu)")
 		h3 Now Playing
-		span.now-playing-title {{currentClip.name}}
+		h4.now-playing-title {{currentClip.name}}
 	ul.list-group
 		li.list-group-item(ng-repeat="c in menuControls", ng-class="{'menu-highlight': c.hover}", ng-mouseenter="c.hover=true", ng-mouseleave="c.hover=false", ng-click="c.click()") {{c.label()}}
 			strong
