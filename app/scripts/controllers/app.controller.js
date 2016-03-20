@@ -60,6 +60,12 @@ angular.module('kamehameApp')
             hover:false,
             click: function() {$scope.toggle($scope.random);},
             label: function(){ return 'Random: ' }
+          },
+          {
+            name:'mute',
+            hover:false,
+            click: function() {$scope.toggle($scope.mute)},
+            label: function(){ return 'Mute: '}
           }
         ]
       });

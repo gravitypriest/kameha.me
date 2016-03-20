@@ -1,3 +1,3 @@
 'use strict';
 
-angular.module('kamehameApp', []);
+angular.module('kamehameApp', ['ngAnimate']);
