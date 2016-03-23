@@ -12,35 +12,35 @@ var appRoot = path.join(__dirname, 'app');
 var videoDir = path.join(__dirname, 'video');
 
 var compileJade = function() {
-	// compile jade(pug) to html
-	jadeFiles = fs.readdirSync(path.join(appRoot, 'views'));
-	for (var j in jadeFiles) {
-		jade = jadeFiles[j];
-		console.log('Compiling %s...', jade);
-		htmlFile = path.join(appRoot, 'public', jade.replace('.jade', '.html'));
-		html = pug.renderFile(path.join(appRoot, 'views', jade));
-		fs.writeFile(htmlFile, html, function(err) {
-			if (err) {
-				console.log('Error compiling %s: %s', jade, err);
-				process.exit();
-			}
-		})
-	}
+    // compile jade(pug) to html
+    jadeFiles = fs.readdirSync(path.join(appRoot, 'views'));
+    for (var j in jadeFiles) {
+        jade = jadeFiles[j];
+        console.log('Compiling %s...', jade);
+        htmlFile = path.join(appRoot, 'public', jade.replace('.jade', '.html'));
+        html = pug.renderFile(path.join(appRoot, 'views', jade));
+        fs.writeFile(htmlFile, html, function(err) {
+            if (err) {
+                console.log('Error compiling %s: %s', jade, err);
+                process.exit();
+            }
+        })
+    }
 };
 
 var generateClipList = function() {
-	// generate clip list
-	clipList = [];
-	videos = fs.readdirSync(videoDir);
-	for (var v in videos) {
-		clipList.push({'fname': 'video/' + videos[v], 'name': escapeClipName(videos[v])});
-	}
-	return clipList;
+    // generate clip list
+    clipList = [];
+    videos = fs.readdirSync(videoDir);
+    for (var v in videos) {
+        clipList.push({'fname': 'video/' + videos[v], 'name': escapeClipName(videos[v])});
+    }
+    return clipList;
 };
 
 var escapeClipName = function(clip) {
-	return clip.replace('.webm', '')
-			   .replace(/_/g, ' ');
+    return clip.replace('.webm', '')
+               .replace(/_/g, ' ');
 };
 
 app.set('port', process.env.PORT || 8080);
@@ -59,7 +59,7 @@ app.use('/bower_components', express.static(path.join(__dirname, 'bower_componen
 app.get('/cliplist', function(req, res) {
     res.setHeader('Content-Type', 'application/json');
     res.send(cliplist);
-})
+});
 
 http.createServer(app).listen(app.get('port'), function(){
     console.log('%s: Node server started on port %d ...',

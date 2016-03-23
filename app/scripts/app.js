@@ -8,9 +8,7 @@ angular.module('kamehameApp', [])
       $scope.resetClipList().
       then(function(res) {
 
-        // save the regular order for later
-        $scope.defaultOrderList = res.data;
-        $scope.clipList = [];
+        $scope.clipList = res.data;
 
         // player modes
         $scope.playing = {enabled: true};
@@ -122,9 +120,9 @@ angular.module('kamehameApp', [])
         return $http.get('/cliplist');
       }
       if ($scope.random.enabled) {
-        $scope.clipList = $scope.shuffleArray($scope.defaultOrderList);
+        $scope.shuffleArray($scope.clipList);
       } else {
-        $scope.clipList = $scope.defaultOrderList;
+        $scope.sortArray($scope.clipList);
       }
   	};
 
@@ -158,6 +156,18 @@ angular.module('kamehameApp', [])
       return escapedName;
     };
 
+    $scope.sortArray = function(array) {
+      array.sort(function(obj1, obj2) {
+        if (obj1.name < obj2.name) {
+          return -1;
+        }
+        if (obj1.name > obj2.name) {
+          return 1;
+        }
+        return 0;
+      });
+    };
+
     // http://stackoverflow.com/a/12646864
     $scope.shuffleArray = function(array) {
       for (var i = array.length - 1; i > 0; i--) {
@@ -166,8 +176,7 @@ angular.module('kamehameApp', [])
         array[i] = array[j];
         array[j] = temp;
       }
-      return array;
-    }
+    };
 
     $scope.init();
 
