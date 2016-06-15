@@ -43,6 +43,51 @@ video {
 .volume-button {
 	color: #FFF;
 	text-shadow: 1px 1px 1px #000;
+	margin-top: 2px;
+	display: inline-block;
+	vertical-align: middle;
+}
+
+.volume-mutex {
+	margin-top: 0px;
+	margin-left: 2px;
+	margin-right: 1px;
+}
+
+.volume-container {
+	width: 105px;
+	height: 15px;
+	margin-left:5px;
+	display: inline-block;
+	vertical-align: middle;
+	cursor: pointer;
+}
+
+.volume-piece {
+	margin-top: 5px;
+	margin-bottom: 5px;
+	display: inline-block;
+	pointer-events: none;
+}
+
+.volume-piece.bg {
+	background: #AAA;
+	width: 0px;
+	height: 5px;
+}
+
+.volume-piece.amt {
+	background: #F00;
+	width: 100px;
+	height: 5px;
+}
+
+.volume-piece.grabber {
+	background: #FFF;
+	width: 5px;
+	height:15px;
+	margin-top: 0px;
+	margin-bottom: 0px;
 }
 
 .button-highlight {

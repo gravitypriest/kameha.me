@@ -3,6 +3,11 @@
 .menu-open-block.noselect(ng-include="'menu.html'", ng-show="showmenu.enabled")
 .volume-block.noselect
     i.fa.fa-2x.volume-button(ng-class="{'fa-volume-up': !mute.enabled, 'fa-volume-off': mute.enabled, 'volume-muted': mute.enabled && !vol.hover, 'button-highlight': vol.hover}", ng-mouseenter='vol.hover=true', ng-mouseleave='vol.hover=false', ng-click='toggle(mute)')
+    i.fa.fa-times.volume-button.volume-mutex(ng-show='mute.enabled', ng-class="{'volume-muted': mute.enabled && !vol.hover, 'button-highlight': vol.hover}", ng-mouseenter='vol.hover=true', ng-mouseleave='vol.hover=false', ng-click='toggle(mute)')
+    .volume-container(ng-mousedown='clickDownVolume($event)')
+        .volume-piece.amt(ng-style="{'width': currentVolume().volume}")
+        .volume-piece.grabber
+        .volume-piece.bg(ng-style="{'width': currentVolume().opposite}")
 .player-block.noselect
     i.fa.fa-step-backward.fa-2x.player-button(ng-class="{'button-highlight': back.hover}", ng-mouseenter="back.hover=true", ng-mouseleave="back.hover=false", ng-click="skipBackward()")
     i.fa.fa-pause.fa-2x.player-button(ng-class="{'fa-pause':playing.enabled, 'fa-play': !playing.enabled, 'button-highlight': play.hover, 'play-button': !playing.enabled}", ng-mouseenter="play.hover=true", ng-mouseleave="play.hover=false", ng-click="toggle(playing)")

@@ -2,9 +2,14 @@
 	.panel-body
 		i.fa.fa-bars.fa-2x(ng-class="{'button-highlight': menu.hover}", ng-mouseenter="menu.hover=true", ng-mouseleave="menu.hover=false", ng-click="toggle(showmenu)")
 		h3 Now Playing
-		h4.now-playing-title {{currentClip.name}}
+		h4.now-playing-title(ng-bind="currentClip.name")
 	ul.list-group
-		li.list-group-item(ng-repeat="c in menuControls", ng-class="{'menu-highlight': c.hover}", ng-mouseenter="c.hover=true", ng-mouseleave="c.hover=false", ng-click="c.click()") 
+		li.list-group-item
+			span
+				i.fa.fa-film.fa-1x
+				| &nbsp; Clip Select 
+				strong Coming soon!
+		li.list-group-item(ng-repeat="c in ::menuControls", ng-class="{'menu-highlight': c.hover}", ng-mouseenter="c.hover=true", ng-mouseleave="c.hover=false", ng-click="c.click()") 
 			span
 				i.fa.fa-pause.fa-1x(ng-show="c.name === 'play' && playing.enabled")
 				i.fa.fa-play.fa-1x(ng-show="c.name === 'play' && !playing.enabled")
@@ -13,7 +18,7 @@
 				i.fa.fa-random.fa-1x(ng-show="c.name === 'random'")
 				i.fa.fa-refresh.fa-1x(ng-show="c.name === 'repeat'")
 				i.fa.fa-volume-off.fa-1x(ng-show="c.name === 'mute'")
-				| &nbsp; {{c.label()}}
+				| &nbsp; {{::c.label()}}
 			strong
 				span(ng-show="c.name === 'repeat' && repeat.enabled") ON
 				span(ng-show="c.name === 'repeat' && !repeat.enabled") OFF			

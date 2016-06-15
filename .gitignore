@@ -1,7 +1,7 @@
 node_modules
 bower_components
 app/public/*.html
-!app/public/index.html
 */*/.DS_Store
 */.DS_Store
 video
+npm-debug.log
