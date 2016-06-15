@@ -13,12 +13,12 @@ var videoDir = path.join(__dirname, 'video');
 
 var compileJade = function() {
     // compile jade(pug) to html
-    jadeFiles = fs.readdirSync(path.join(appRoot, 'jadefiles'));
+    jadeFiles = fs.readdirSync(path.join(appRoot, 'views'));
     for (var j in jadeFiles) {
         jade = jadeFiles[j];
         console.log('Compiling %s...', jade);
         htmlFile = path.join(appRoot, 'public', jade.replace('.jade', '.html'));
-        html = pug.renderFile(path.join(appRoot, 'jadefiles', jade));
+        html = pug.renderFile(path.join(appRoot, 'views', jade));
         fs.writeFile(htmlFile, html, function(err) {
             if (err) {
                 console.log('Error compiling %s: %s', jade, err);
