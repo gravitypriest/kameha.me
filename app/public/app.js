@@ -154,6 +154,8 @@ angular.module('kamehame', [])
     };
 
     $scope.clickDownVolume = function($event) {
+        // make volume slider sticky to mousedown
+        $scope.changeVolume($event.offsetX);
         $scope.dragging = true;
     }
 
